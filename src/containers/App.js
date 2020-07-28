@@ -40,6 +40,7 @@ class App extends Component{
       return (items.Asset_id.toString().toLowerCase().includes(searchfield.toLowerCase())
     ||items.Location.toString().toLowerCase().includes(searchfield.toLowerCase())
     ||items.Building_Fl.toString().toLowerCase().includes(searchfield.toLowerCase())
+    ||items.Asset_description.toString().toLowerCase().includes(searchfield.toLowerCase())
     );
 
     }  )
