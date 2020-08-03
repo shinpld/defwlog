@@ -1,4 +1,5 @@
 import React from 'react';
+import {useParams} from 'react-router';
 
 const SearchBox =({searchfield, searchChange}) =>{
   return (
@@ -6,7 +7,7 @@ const SearchBox =({searchfield, searchChange}) =>{
     <input
       className = 'pa3 ba b--green bg-lightest-blue'
       type='search'
-      placeholder='seach items'
+      placeholder={'search items'}
       onChange={searchChange}
     />
     </div>

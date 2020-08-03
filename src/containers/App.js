@@ -4,6 +4,12 @@ import SearchBox from '../components/SearchBox.js';
 import Scroll from '../components/Scroll.js';
 import './App.css';
 import {base,db} from './Base.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class App extends Component{
   constructor(){
@@ -41,9 +47,12 @@ class App extends Component{
     ||items.Location.toString().toLowerCase().includes(searchfield.toLowerCase())
     ||items.Building_Fl.toString().toLowerCase().includes(searchfield.toLowerCase())
     ||items.Asset_description.toString().toLowerCase().includes(searchfield.toLowerCase())
+    ||items.Asset_Sup.toString().toLowerCase().includes(searchfield.toLowerCase())
     );
 
     }  )
+
+    
     if(!items.length){
       return <h1>Loading...</h1>
     }
