@@ -7,7 +7,7 @@ const cardsArray = items.map((user,i)=>{
   return <Card
     key={i}
     
-    asset_id={items[i].Room}
+    asset_id={items[i].Asset}
     location={items[i].Location} 
     bld={items[i].Building_Fl}
     desc={items[i].Asset_description}
