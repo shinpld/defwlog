@@ -53,21 +53,6 @@ export default function CreateButton({addLog,msg,msgChange}) {
   };
 
 
-  function generateLog2(){ 
-    // Changing state 
-
-    var immediatelyAvailableReference = base.push('messages', {
-      data: {message: `msdasdsad ${msg}  sasd`,
-      reason: 'reason1' },
-      then(err){
-        if(!err){
-          
-        }
-      }
-    });
-    //available immediately, you don't have to wait for the callback to be called
-    var generatedKey = immediatelyAvailableReference.key;
-  } 
   
 
   const body = (
@@ -76,7 +61,7 @@ export default function CreateButton({addLog,msg,msgChange}) {
       <p id="simple-modal-description">
         Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
       </p>
-      <Button variant="contained" color="secondary" onClick={this.generateLog2} >
+      <Button variant="contained" color="secondary" onClick={addLog} >
             Hello World {msg}
         </Button>
         <input

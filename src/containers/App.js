@@ -26,13 +26,13 @@ class App extends Component{
   }
 
 
-  generateLog(){ 
+  generateLog= () =>{ 
     // Changing state 
 
     
     
     var immediatelyAvailableReference = base.push('messages', {
-      data: {message: `msdasdsad  sasd`,
+      data: {message: `msdasdsad ${this.state.inputmsg} sasd`,
       reason: 'reason1' },
       then(err){
         if(!err){
