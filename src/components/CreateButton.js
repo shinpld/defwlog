@@ -1,0 +1,107 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
+
+import {base,db} from '../containers/Base';
+
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
+
+
+export default function CreateButton({addLog,msg,msgChange}) {
+
+
+  const classes = useStyles();
+  // getModalStyle is not a pure function, we roll the style only on the first render
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+  function generateLog2(){ 
+    // Changing state 
+
+    var immediatelyAvailableReference = base.push('messages', {
+      data: {message: `msdasdsad ${msg}  sasd`,
+      reason: 'reason1' },
+      then(err){
+        if(!err){
+          
+        }
+      }
+    });
+    //available immediately, you don't have to wait for the callback to be called
+    var generatedKey = immediatelyAvailableReference.key;
+  } 
+  
+
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      <h2 id="simple-modal-title">Text in a modal</h2>
+      <p id="simple-modal-description">
+        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+      </p>
+      <Button variant="contained" color="secondary" onClick={this.generateLog2} >
+            Hello World {msg}
+        </Button>
+        <input
+            className = 'pa3 ba b--green bg-lightest-blue'
+            type='search'
+            placeholder={'search items'}
+            onChange={msgChange}
+            />
+    </div>
+  );
+
+  return (
+    <div>
+      <button type="button" onClick={handleOpen }>
+        Open Modal
+      </button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        
+        {body}
+      </Modal>
+    </div>
+  );
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-
-
-const Card = ({asset_id,desc,desc2,location,bld,sn,room,sup}) => {
+import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
+const Card = ({message}) => {
 
   return (
   <div className='tc bg-white dib br3 pa3 ma2 grow bw2 w-90 shadow-5'>
@@ -9,23 +9,31 @@ const Card = ({asset_id,desc,desc2,location,bld,sn,room,sup}) => {
     <div>
      
       
-          <div className="f5 fw6 br3 pa3 ma2 bg-light-green  ">
-              {asset_id}
-          </div>
-          <div className="dt-ns dt--fixed-ns">
-            <div class="dtc-ns tc pv2 bg-black-10">
-              <dt class="dib b">id:</dt>
-              <dd class="dib ml0 dark-gray">{asset_id}</dd>
+          
+          <div className="dt-ns dt--fixed-ns bg-black-10 flex">
+            <div class="dtc-ns tc pa2 ">
+            <Chip size="medium" label="User" color="primary"/>
+          
             </div>
-           
-          <div className="dt-ns dt--fixed-ns">
-            <div class="dtc-ns tc pv2 bg-black-10">
-              <dt class="dib b">Serial No: </dt>
-              <dd class="dib ml0 dark-gray">{sn}</dd>
+            <div class="dtc-ns tc pa2 ">
+            <Chip size="medium" label="Interface" color="secondary"/>
+            </div>
+         
+            <div class="dtc-ns tc pa2 ">
+              <dt class="dib b">{"By: "}</dt>
+              <Chip size="medium" label="Sorawit" />
+            </div>
+          
+          </div>
+          <div className="f5 fw6 br3 pa3 ma2 tl  ">
+              {message}
           </div>
 
        
     </div>
+
+    
+
   </div>
 );
 

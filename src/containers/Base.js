@@ -4,16 +4,17 @@ import 'firebase/database'
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCOVANCu8-K_O69X8RaiqOofuoSO2IlZUo",
-    authDomain: "aeroasset-f44b3.firebaseapp.com",
-    databaseURL: "https://aeroasset-f44b3.firebaseio.com",
-    projectId: "aeroasset-f44b3",
-    storageBucket: "aeroasset-f44b3.appspot.com",
-    messagingSenderId: "1049931300120",
-    appId: "1:1049931300120:web:33b2b43ff7630ed2bc726d"
+  apiKey: "AIzaSyDsp2Fl1uxkUNS-bXyQtz923m4fqKfGGwk",
+  authDomain: "defwlog.firebaseapp.com",
+  databaseURL: "https://defwlog.firebaseio.com",
+  projectId: "defwlog",
+  storageBucket: "defwlog.appspot.com",
+  messagingSenderId: "832874138092",
+  appId: "1:832874138092:web:67f06c50a31953e5af98c9",
+  measurementId: "G-5WV9YB7Y0R"
   };
  // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-const base = Rebase.createClass(app.database())
+const base = Rebase.createClass(app.database());
  
 export {base}

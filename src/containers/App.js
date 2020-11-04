@@ -13,18 +13,27 @@ class App extends Component{
     super();
     this.state={
       items: [],
-      searchfield: ''
+      searchfield: '',
+      inputmsg: ''
     }
   }
 
   onSearchChange = (event) => {
     this.setState({searchfield: event.target.value})
   }
+  onMsgChange = (event) => {
+    this.setState({inputmsg: event.target.value})
+  }
+
+
   generateLog(){ 
     // Changing state 
+
+    
     
     var immediatelyAvailableReference = base.push('messages', {
-      data: {message: 'pushed',reason: 'reason1', },
+      data: {message: `msdasdsad  sasd`,
+      reason: 'reason1' },
       then(err){
         if(!err){
           
@@ -34,11 +43,6 @@ class App extends Component{
     //available immediately, you don't have to wait for the callback to be called
     var generatedKey = immediatelyAvailableReference.key;
   } 
-
-  onSubmit(){
-
-  }
-  
   
 
   componentDidMount(){
@@ -54,25 +58,21 @@ class App extends Component{
 
 
   render(){
-    const {items, searchfield} =this.state;
+    const {items, searchfield,inputmsg} =this.state;
     const filteredItems = this.state.items.filter(items=>{
       return (items.message.toString().toLowerCase().includes(searchfield.toLowerCase()))
     });
 
 
    
-    if(!items.length){
-      return <h1>Loading...</h1>
-    }
+    // if(!items.length){
+    //   return <h1>Loading...</h1>
+    // }
 
     return (
       <div className='tc'>
-        
-        <Button variant="contained" color="secondary" onClick={this.generateLog} >
-            Hello World
-        </Button>
 
-        <CreateButton addLog={this.generateLog} />
+        <CreateButton addLog={this.generateLog} msg={inputmsg} msgChange={this.onMsgChange.bind(this)}  />
           
         <h1 className='f1'> FWLog </h1>
         
