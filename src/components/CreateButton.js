@@ -9,6 +9,8 @@ import TextField from '@material-ui/core/TextField';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
+import {base,db} from '../containers/Base.js';
+
 function getModalStyle() {
   const top = 50 ;
   const left = 50 ;
@@ -42,7 +44,6 @@ const useGridStyles = makeStyles((theme) => ({
     },
   }));
 
-
 const circuits = [
   {
     value: 'User',
@@ -64,14 +65,18 @@ const circuits = [
 
 
 
-export default function CreateButton({addLog,msg,msgChange}) {
+export default function CreateButton() {
 
   const classes = useStyles();
   const classesG = useGridStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
+
+
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [currencyS, setCurrency] = React.useState('User');
+  const [detailtext, setDetailtext] = React.useState('');
+
 
   const handleOpen = () => {
     setOpen(true);
@@ -80,10 +85,30 @@ export default function CreateButton({addLog,msg,msgChange}) {
   const handleSelectChange = (event) => {
     setCurrency(event.target.value);
   };
+  const handleDetailChange = (event) => {
+    setDetailtext(event.target.value);
+  };
 
   const handleClose = () => {
     setOpen(false);
   };
+  const generateLog2= () =>{ 
+    // Changing state 
+
+    var immediatelyAvailableReference = base.push('messages', {
+      data: {message: `msdasdsad ${currencyS} ${detailtext} sasd`,
+      reason: 'reason1' },
+      then(err){
+        if(!err){
+         
+        }
+      }
+    });
+    //available immediately, you don't have to wait for the callback to be called
+    var generatedKey = immediatelyAvailableReference.key;
+    
+  } 
+  
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
@@ -125,7 +150,7 @@ export default function CreateButton({addLog,msg,msgChange}) {
                     </TextField>
                 </Grid>
                 <Grid item xs={6} sm={3}>
-                    <Button variant="contained" color="secondary" onClick={()=>{ addLog(); handleClose(); }} >
+                    <Button variant="contained" color="secondary" onClick={()=>{ generateLog2(); handleClose(); }} >
                         Publish 
                     </Button>
                 </Grid>
@@ -138,7 +163,7 @@ export default function CreateButton({addLog,msg,msgChange}) {
                         rows={4}
                         defaultValue=""
                         variant="outlined"
-                        onChange={msgChange}
+                        onChange={handleDetailChange}
                         className="w-100"
                     />
                 </Grid>

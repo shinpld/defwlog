@@ -25,10 +25,14 @@ class App extends Component{
   onMsgChange = (event) => {
     this.setState({inputmsg: event.target.value})
   }
+  onCircuitChange = (event) => {
+    this.setState({inputCircuit: event.target.value})
+  }
 
   clearinput = () => {
     this.setState({inputmsg: '',inputCircuit:''});
   }
+
 
 
   generateLog= () =>{ 
@@ -37,7 +41,7 @@ class App extends Component{
     
     
     var immediatelyAvailableReference = base.push('messages', {
-      data: {message: `msdasdsad ${this.state.inputmsg} sasd`,
+      data: {message: `msdasdsad ${this.state.inputmsg} ${this.state.inputCircuit} sasd`,
       reason: 'reason1' },
       then(err){
         if(!err){
@@ -64,7 +68,7 @@ class App extends Component{
 
 
   render(){
-    const {items, searchfield,inputmsg} =this.state;
+    const {items, searchfield,inputmsg,inputCircuit} =this.state;
     const filteredItems = this.state.items.filter(items=>{
       return (items.message.toString().toLowerCase().includes(searchfield.toLowerCase()))
     });
@@ -78,7 +82,7 @@ class App extends Component{
     return (
       <div className='tc'>
 
-        <CreateButton addLog={this.generateLog} msg={inputmsg} msgChange={this.onMsgChange.bind(this)}  />
+        <CreateButton   />
           
         <h1 className='f1'> FWLog </h1>
         
