@@ -14,7 +14,8 @@ class App extends Component{
     this.state={
       items: [],
       searchfield: '',
-      inputmsg: ''
+      inputmsg: '',
+      inputCircuit:''
     }
   }
 
@@ -23,6 +24,10 @@ class App extends Component{
   }
   onMsgChange = (event) => {
     this.setState({inputmsg: event.target.value})
+  }
+
+  clearinput = () => {
+    this.setState({inputmsg: '',inputCircuit:''});
   }
 
 
@@ -42,7 +47,7 @@ class App extends Component{
     });
     //available immediately, you don't have to wait for the callback to be called
     var generatedKey = immediatelyAvailableReference.key;
-    this.setState({inputmsg: ''});
+    this.clearinput();
   } 
   
 
