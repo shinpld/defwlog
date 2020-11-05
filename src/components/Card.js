@@ -12,7 +12,7 @@ const Card = ({message,circuit}) => {
           
           <div className="dt-ns dt--fixed-ns bg-black-10 flex">
             <div class="dtc-ns tc pa2 ">
-            <Chip size="medium" label={(circuit==null) ? "null":circuit)} color="primary"/>
+            <Chip size="medium" label={(circuit==null) ? "null":circuit} color="primary"/>
           
             </div>
             <div class="dtc-ns tc pa2 ">
