@@ -82,7 +82,24 @@ const types = [
       label: 'Other',
     },
   ];
-  
+const users = [
+    {
+      value: 'Policy',
+      label: 'Policy',
+    },
+    {
+      value: 'Interface',
+      label: 'Interface',
+    },
+    {
+      value: 'Route',
+      label: 'Route',
+    },
+    {
+      value: 'Other',
+      label: 'Other',
+    },
+  ];
 
 
 
@@ -243,9 +260,9 @@ export default function CreateButton() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen }>
-        Open Modal
-      </button>
+      <Button variant="contained" color="secondary" onClick={handleOpen }>
+        Create Log
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

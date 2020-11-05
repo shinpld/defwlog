@@ -7,6 +7,7 @@ import './App.css';
 import {base,db} from './Base.js';
 import Button from '@material-ui/core/Button';
 import CreateButton from '../components/CreateButton';
+import Grid from '@material-ui/core/Grid';
 
 class App extends Component{
   constructor(){
@@ -61,13 +62,29 @@ class App extends Component{
     // }
 
     return (
-      <div className='tc'>
+      <div >
+        <Grid container spacing={3} justify="center" alignItems="center">
+               <Grid item xs={6} sm={3}>
+                    
+                  <h1 className='f1'> FWLog </h1>
+                  
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                   
+                <SearchBox searchChange={this.onSearchChange}/>
+                 
+                </Grid>
+                <Grid item xs={6} sm={3}>
+                  <CreateButton   />
+                </Grid>
 
-        <CreateButton   />
-          
-        <h1 className='f1'> FWLog </h1>
+              
+
+            </Grid>
+
+      
         
-        <SearchBox searchChange={this.onSearchChange}/>
+        
         <Scroll>
           <CardList items={filteredItems.splice(0,30)} />
         </Scroll>
