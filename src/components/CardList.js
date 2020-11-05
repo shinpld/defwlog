@@ -3,7 +3,7 @@ import Card from './Card';
 
 
 const CardList = ({items}) =>{
-const cardsArray = items.map((user,i)=>{
+const cardsArray = items.reverse().map((user,i)=>{
   return <Card
     key={i}
     

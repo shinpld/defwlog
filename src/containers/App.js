@@ -36,12 +36,13 @@ class App extends Component{
       reason: 'reason1' },
       then(err){
         if(!err){
-          
+         
         }
       }
     });
     //available immediately, you don't have to wait for the callback to be called
     var generatedKey = immediatelyAvailableReference.key;
+    this.setState({inputmsg: ''});
   } 
   
 

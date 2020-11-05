@@ -6,14 +6,14 @@ import Button from '@material-ui/core/Button';
 import {base,db} from '../containers/Base';
 
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+
+
+
 
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50 ;
+  const left = 50 ;
 
   return {
     top: `${top}%`,
@@ -27,7 +27,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
-    width: 400,
+    width: 600,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
@@ -35,9 +35,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const useGridStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }));
 
 export default function CreateButton({addLog,msg,msgChange}) {
-
 
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -57,11 +66,11 @@ export default function CreateButton({addLog,msg,msgChange}) {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
+      <h2 id="simple-modal-title">Add new log </h2>
       <p id="simple-modal-description">
         Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
       </p>
-      <Button variant="contained" color="secondary" onClick={addLog} >
+      <Button variant="contained" color="secondary" onClick={()=>{ addLog(); handleClose(); }} >
             Hello World {msg}
         </Button>
         <input
