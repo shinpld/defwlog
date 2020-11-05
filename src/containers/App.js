@@ -35,25 +35,6 @@ class App extends Component{
 
 
 
-  generateLog= () =>{ 
-    // Changing state 
-
-    
-    
-    var immediatelyAvailableReference = base.push('messages', {
-      data: {message: `msdasdsad ${this.state.inputmsg} ${this.state.inputCircuit} sasd`,
-      reason: 'reason1' },
-      then(err){
-        if(!err){
-         
-        }
-      }
-    });
-    //available immediately, you don't have to wait for the callback to be called
-    var generatedKey = immediatelyAvailableReference.key;
-    this.clearinput();
-  } 
-  
 
   componentDidMount(){
    

@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import {base,db} from '../containers/Base.js';
 
+
 function getModalStyle() {
   const top = 50 ;
   const left = 50 ;
@@ -63,6 +64,26 @@ const circuits = [
   },
 ];
 
+const types = [
+    {
+      value: 'Policy',
+      label: 'Policy',
+    },
+    {
+      value: 'Interface',
+      label: 'Interface',
+    },
+    {
+      value: 'Route',
+      label: 'Route',
+    },
+    {
+      value: 'Other',
+      label: 'Other',
+    },
+  ];
+  
+
 
 
 export default function CreateButton() {
@@ -74,20 +95,28 @@ export default function CreateButton() {
 
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
-  const [currencyS, setCurrency] = React.useState('User');
+  const [circuit, setCircuit] = React.useState('User');
   const [detailtext, setDetailtext] = React.useState('');
-
+  const [type, setType] = React.useState('');
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleSelectChange = (event) => {
-    setCurrency(event.target.value);
+    setCircuit(event.target.value);
   };
   const handleDetailChange = (event) => {
     setDetailtext(event.target.value);
   };
+  const handleTypeChange = (event) => {
+    setType(event.target.value);
+  };
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
 
   const handleClose = () => {
     setOpen(false);
@@ -96,8 +125,11 @@ export default function CreateButton() {
     // Changing state 
 
     var immediatelyAvailableReference = base.push('messages', {
-      data: {message: `msdasdsad ${currencyS} ${detailtext} sasd`,
-      reason: 'reason1' },
+      data: 
+        {message: `msdasdsad ${circuit} ${detailtext} sasd`,
+        circuit: `${circuit}`,
+        
+        reason: 'reason1' },
       then(err){
         if(!err){
          
@@ -121,33 +153,65 @@ export default function CreateButton() {
             <Grid container spacing={3}>
                 
                 <Grid item xs={12} sm={6}>
-                <Paper className={classesG.paper}>xs=12 sm=6</Paper>
+                    {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Date picker dialog"
+                            format="MM/dd/yyyy"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                            />
+                    </MuiPickersUtilsProvider> */}
                 </Grid>
                 <Grid item xs={12} sm={6}>
                 <Paper className={classesG.paper}>xs=12 sm=6</Paper>
                 </Grid>
                 <Grid item xs={6} sm={3}>
-                <Paper className={classesG.paper}>xs=6 sm=3</Paper>
+                    <TextField
+                        id="fill-Type"
+                        select
+                        label="Select"
+                        value={circuit}
+                        onChange={handleSelectChange}
+                        helperText=""
+                        variant="filled"
+                        className="w-100"
+                        >
+                        {circuits.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                            </MenuItem>
+                        ))}
+                        </TextField>
                 </Grid>
                 <Grid item xs={6} sm={3}>
-                <Paper className={classesG.paper}>xs=6 sm=3</Paper>
+                   
+                    <TextField
+                            id="fill-Circuit"
+                            select
+                            label="Select"
+                            value={type}
+                            onChange={handleTypeChange}
+                            helperText=""
+                            variant="filled"
+                            className="w-100"
+
+                            >
+                            {types.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                                </MenuItem>
+                            ))}
+                     </TextField>
+                 
                 </Grid>
+                
                 <Grid item xs={6} sm={3}>
-                <TextField
-                    id="filled-select-currency"
-                    select
-                    label="Select"
-                    value={currencyS}
-                    onChange={handleSelectChange}
-                    helperText="Please select your currency"
-                    variant="filled"
-                    >
-                    {circuits.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                        </MenuItem>
-                    ))}
-                    </TextField>
+                    
                 </Grid>
                 <Grid item xs={6} sm={3}>
                     <Button variant="contained" color="secondary" onClick={()=>{ generateLog2(); handleClose(); }} >

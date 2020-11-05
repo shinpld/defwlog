@@ -8,7 +8,7 @@ const cardsArray = items.reverse().map((user,i)=>{
     key={i}
     
     message={items[i].message}
-   
+    circuit={items[i].circuit}
     
     />
 })

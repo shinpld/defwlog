@@ -1,7 +1,7 @@
 import React from 'react';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
-const Card = ({message}) => {
+const Card = ({message,circuit}) => {
 
   return (
   <div className='tc bg-white dib br3 pa3 ma2 grow bw2 w-90 shadow-5'>
@@ -12,7 +12,7 @@ const Card = ({message}) => {
           
           <div className="dt-ns dt--fixed-ns bg-black-10 flex">
             <div class="dtc-ns tc pa2 ">
-            <Chip size="medium" label="User" color="primary"/>
+            <Chip size="medium" label={(circuit==null) ? "null":circuit)} color="primary"/>
           
             </div>
             <div class="dtc-ns tc pa2 ">
