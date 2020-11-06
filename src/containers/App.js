@@ -64,15 +64,15 @@ class App extends Component{
 
     return (
       <div >
-        <div className="pv2">
-           <Grid container spacing={2} justify="center" alignItems="center" className="bg-light-gray">
+        <div >
+           {/* <Grid container spacing={2} justify="center" alignItems="center" className="bg-light-gray">
                <Grid item xs={6} sm={3}>
                     
                   <h1 className='f1 black'> FWLog </h1>
                   
                 </Grid>
                 <Grid item xs={6} sm={3}>  
-                 <SearchBox searchChange={this.onSearchChange}/>
+                 
                 </Grid>
                  <Grid item xs={6} sm={3}>
                   <CreateButton   />
@@ -81,8 +81,11 @@ class App extends Component{
                   <CreateButton   />
                 </Grid>
 
-          </Grid>
-       
+          </Grid> */}
+
+          
+          <Menubar searchCh={this.onSearchChange} />
+          <SearchBox searchChange={this.onSearchChange}/>
         </div>
        
 

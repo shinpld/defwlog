@@ -3,8 +3,9 @@ import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 const Card = ({message,circuit}) => {
 
+
   return (
-  <div className='tc bg-white dib br3 pa3 ma2 grow bw2 w-90 shadow-5'>
+  <div className='tc bg-white dib br3 pa1 ma2 grow bw2 w-90 shadow-5 '>
     
     <div>
   

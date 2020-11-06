@@ -34,7 +34,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
-    width: 600,
+    width: '60%',
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
@@ -123,7 +123,7 @@ export default function CreateButton() {
   const [circuit, setCircuit] = React.useState('User');
   const [detailtext, setDetailtext] = React.useState('');
   const [type, setType] = React.useState('');
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2019-08-18T21:11:54'));
 
   const handleOpen = () => {
     setOpen(true);
@@ -151,7 +151,7 @@ export default function CreateButton() {
 
     var immediatelyAvailableReference = base.push('messages', {
       data: 
-        {message: `msdasdsad ${circuit} ${detailtext} ${selectedDate} sasd`,
+        {message: ` ${circuit} ${detailtext} ${selectedDate} ตรงกันข้ามกับความเชื่อที่นิยมกัน Lorem Ipsum ไม่ได้เป็นเพียงแค่ชุดตัวอักษรที่สุ่มขึ้นมามั่วๆ แต่หากมีที่มาจากวรรณกรรมละตินคลาสสิกชิ้นหนึ่งในยุค 45 ปีก่อนคริสตศักราช ทำให้มันมีอายุถึงกว่า 2000 ปีเลยทีเดียว ริชาร์ด แมคคลินท็อค ศาสตราจารย์ชาวละติน จากวิทยาลัยแฮมพ์เด็น-ซิดนีย์ ในรัฐเวอร์จิเนียร์ นำคำภาษาละตินคำว่า consectetur ซึ่งหาคำแปลไม่ได้จาก Lorem Ipsum ตอนหนึ่งมาค้นเพิ่มเติม โดยตรวจเทียบกับแหล่งอ้างอิงต่างๆ ในวรรณกรรมคลาสสิก และค้นพบแหล่งข้อมูลที่ไร้ข้อกังขาว่า Lorem Ipsum`,
         circuit: `${circuit}`,
         
         reason: 'reason1' },
@@ -247,24 +247,27 @@ export default function CreateButton() {
                 </Grid>
                 
                 <Grid item xs={6} sm={3}>
-                    <TextField
-                            id="fill-Circuit"
-                            select
-                            label="Select"
-                            value={type}
-                            onChange={handleTypeChange}
-                            helperText=""
-                            variant="filled"
-                            className="w-100"
+                    {type === 'Policy' && 
+                        <TextField
+                                id="fill-Circuit"
+                                select
+                                label="Select"
+                                value={type}
+                                onChange={handleTypeChange}
+                                helperText=""
+                                variant="filled"
+                                className="w-100"
 
-                            >
-                            {types.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                                </MenuItem>
-                            ))}
-                     </TextField>
-                 
+                                >
+                                {types.map((option) => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                    </MenuItem>
+                                ))}
+                        </TextField>
+                    
+                    }
+                    
                 </Grid>
                 <Grid item xs={6} sm={3}>
                     <Button variant="contained" color="secondary" onClick={()=>{ generateLog2(); handleClose(); }} >
