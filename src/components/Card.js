@@ -7,8 +7,7 @@ const Card = ({message,circuit}) => {
   <div className='tc bg-white dib br3 pa3 ma2 grow bw2 w-90 shadow-5'>
     
     <div>
-     
-      
+  
           
           <div className="dt-ns dt--fixed-ns bg-black-10 flex">
             <div class="dtc-ns tc pa2 ">

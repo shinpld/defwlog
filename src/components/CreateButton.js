@@ -11,6 +11,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import {base,db} from '../containers/Base.js';
 
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
+
 
 function getModalStyle() {
   const top = 50 ;
@@ -143,7 +151,7 @@ export default function CreateButton() {
 
     var immediatelyAvailableReference = base.push('messages', {
       data: 
-        {message: `msdasdsad ${circuit} ${detailtext} sasd`,
+        {message: `msdasdsad ${circuit} ${detailtext} ${selectedDate} sasd`,
         circuit: `${circuit}`,
         
         reason: 'reason1' },
@@ -170,7 +178,7 @@ export default function CreateButton() {
             <Grid container spacing={3}>
                 
                 <Grid item xs={12} sm={6}>
-                    {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
                             margin="normal"
                             id="date-picker-dialog"
@@ -182,10 +190,21 @@ export default function CreateButton() {
                                 'aria-label': 'change date',
                             }}
                             />
-                    </MuiPickersUtilsProvider> */}
+                    </MuiPickersUtilsProvider>
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                <Paper className={classesG.paper}>xs=12 sm=6</Paper>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <KeyboardTimePicker
+                            margin="normal"
+                            id="time-picker"
+                            label="Time picker"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change time',
+                            }}
+                            />
+                    </MuiPickersUtilsProvider>
                 </Grid>
                 <Grid item xs={6} sm={3}>
                     <TextField
@@ -228,7 +247,24 @@ export default function CreateButton() {
                 </Grid>
                 
                 <Grid item xs={6} sm={3}>
-                    
+                    <TextField
+                            id="fill-Circuit"
+                            select
+                            label="Select"
+                            value={type}
+                            onChange={handleTypeChange}
+                            helperText=""
+                            variant="filled"
+                            className="w-100"
+
+                            >
+                            {types.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                                </MenuItem>
+                            ))}
+                     </TextField>
+                 
                 </Grid>
                 <Grid item xs={6} sm={3}>
                     <Button variant="contained" color="secondary" onClick={()=>{ generateLog2(); handleClose(); }} >
