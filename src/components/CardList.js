@@ -9,7 +9,9 @@ const cardsArray = items.reverse().map((user,i)=>{
     
     message={items[i].message}
     circuit={items[i].circuit}
-    
+    type={items[i].type}
+    submitDate={items[i].submitDate}
+    ky ={items[i].key}
     />
 })
   return(

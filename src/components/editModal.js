@@ -128,7 +128,7 @@ const names = [
 ];
 
 
-export default function CreateButton() {
+export default function editModal() {
 
   const classes = useStyles();
   const classesG = useGridStyles();

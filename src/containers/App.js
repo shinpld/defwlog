@@ -13,6 +13,7 @@ import Menubar from '../components/Menubar';
 class App extends Component{
   constructor(){
     super();
+    this.popItem = this.popItem.bind(this);
     this.state={
       items: [],
       searchfield: '',
@@ -35,6 +36,19 @@ class App extends Component{
     this.setState({inputmsg: '',inputCircuit:''});
   }
 
+  popItem = () => {
+    const ky = "-MLHT-j3Ry1L7NOdcxmt"
+    base.update(`messages/${ky}`, {
+      data: { message: 'Newwwww',circuit: 'User',reason: 'r2' },
+      then(err) {
+        if (!err) {
+        
+        }
+      }
+    });
+  }
+
+  
 
 
 
@@ -88,11 +102,15 @@ class App extends Component{
           <SearchBox searchChange={this.onSearchChange}/>
         </div>
        
-
+        <Button onClick={()=>{this.popItem()}}>
+          Remove
+        </Button>
         
         <Scroll className="pv2">
-          <CardList items={filteredItems.splice(0,30)} />
+          <CardList items={filteredItems} />
         </Scroll>
+
+      
       </div>
     );
   }

@@ -1,7 +1,9 @@
 import React from 'react';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
-const Card = ({message,circuit}) => {
+import EditModal from './editModal'
+
+const Card = ({message,circuit,type,submitDate,ky}) => {
 
 
   return (
@@ -11,22 +13,27 @@ const Card = ({message,circuit}) => {
   
           
           <div className="dt-ns dt--fixed-ns bg-black-10 flex">
-            <div class="dtc-ns tc pa2 ">
+            <div class="fl w-20 pa2 ">
             <Chip size="medium" label={(circuit==null) ? "null":circuit} color="primary"/>
           
             </div>
-            <div class="dtc-ns tc pa2 ">
-            <Chip size="medium" label="Interface" color="secondary"/>
+            <div class="fl w-20 pa2 ">
+            <Chip size="medium" label={(type==null) ? "null":type} color="secondary"/>
             </div>
-         
-            <div class="dtc-ns tc pa2 ">
+
+            <div class="fl w-40 pa2 ">
+              <dt class="dib b">{(submitDate==null) ? "null":submitDate.slice(0,-16)}</dt>
+             
+            </div>
+
+            <div class="fl w-20 pa2 ">
               <dt class="dib b">{"By: "}</dt>
               <Chip size="medium" label="Sorawit" />
             </div>
           
           </div>
           <div className="f5 fw6 br3 pa3 ma2 tl  ">
-              {message}
+              {message} {ky}
           </div>
 
        

@@ -78,7 +78,7 @@ export default function Header(searchChange) {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+          
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             FireWall Log
