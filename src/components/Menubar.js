@@ -81,7 +81,7 @@ export default function Header(searchChange) {
           
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            FireWall Log
+            บันทึกการแก้ไข Firewall
           </Typography>
 
           <CreateButton />

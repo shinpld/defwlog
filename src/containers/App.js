@@ -79,8 +79,7 @@ class App extends Component{
 
     return (
       <div >
-      
-            
+    
         <Menubar circuitFilter={this.onCircuitChange} />
 
         <Container maxWidth="80%">

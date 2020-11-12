@@ -203,9 +203,9 @@ export default function EditModal({Emessage,Ecircuit,Etype,EsubmitDate,Eky,Ename
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Add new log </h2>
+      <h2 id="simple-modal-title">แก้ไขบันทึก </h2>
       <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+       .
       </p>
         
         <div className={classesG.root}>

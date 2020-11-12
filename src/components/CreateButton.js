@@ -125,6 +125,34 @@ const names = [
     value: 'JESADA',
     label: 'JESADA',
   },
+  {
+    value: 'KANIT',
+    label: 'KANIT',
+  },
+  {
+    value: 'KRISANA',
+    label: 'KRISANA',
+  },
+  {
+    value: 'NAPITCHAYA',
+    label: 'NAPITCHAYA',
+  },
+  {
+    value: 'PATCHARAPORN',
+    label: 'PATCHARAPORN',
+  },
+  {
+    value: 'Policy',
+    label: 'Policy',
+  },
+  {
+    value: 'Interface',
+    label: 'Interface',
+  },
+  {
+    value: 'Route',
+    label: 'Route',
+  }
 ];
 
 
@@ -206,9 +234,9 @@ export default function CreateButton() {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Add new log </h2>
+      <h2 id="simple-modal-title">เพิ่มบันทึก </h2>
       <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+        
       </p>
         
         <div className={classesG.root}>
@@ -302,7 +330,7 @@ export default function CreateButton() {
                 <Grid item xs={12} sm={6}>
                     <TextField
                         id="outlined-multiline-static"
-                        label="สาเหตุ"
+                        label="เหตุผล"
                         multiline
                         rows={2}
                         defaultValue=""
@@ -323,7 +351,7 @@ export default function CreateButton() {
                         className="w-100"
                         >
                         {names.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
+                            <MenuItem key={option.value} size="small" value={option.value}>
                             {option.label}
                             </MenuItem>
                         ))}
@@ -340,7 +368,7 @@ export default function CreateButton() {
                 <Grid item xs={12}>
                     <TextField
                         id="outlined-multiline-static"
-                        label="ข้อความ"
+                        label="รายละเอียด"
                         multiline
                         rows={4}
                         defaultValue=""
