@@ -21,7 +21,7 @@ const Card = ({message,circuit,type,submitDate,ky}) => {
             <Chip size="medium" label={(type==null) ? "null":type} color="secondary"/>
             </div>
 
-            <div class="fl w-40 pa2 ">
+            <div class="fl w-40 pa2 tc ">
               <dt class="dib b">{(submitDate==null) ? "null":submitDate.slice(0,-16)}</dt>
              
             </div>

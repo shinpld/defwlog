@@ -78,33 +78,18 @@ class App extends Component{
 
     return (
       <div >
-        <div >
-           {/* <Grid container spacing={2} justify="center" alignItems="center" className="bg-light-gray">
-               <Grid item xs={6} sm={3}>
-                    
-                  <h1 className='f1 black'> FWLog </h1>
-                  
-                </Grid>
-                <Grid item xs={6} sm={3}>  
-                 
-                </Grid>
-                 <Grid item xs={6} sm={3}>
-                  <CreateButton   />
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                  <CreateButton   />
-                </Grid>
+      
+            
+        <Menubar searchCh={this.onSearchChange} />
 
-          </Grid> */}
-
-          
-          <Menubar searchCh={this.onSearchChange} />
+        <div>
           <SearchBox searchChange={this.onSearchChange}/>
         </div>
+ 
+
+        
+
        
-        <Button onClick={()=>{this.popItem()}}>
-          Remove
-        </Button>
         
         <Scroll className="pv2">
           <CardList items={filteredItems} />
