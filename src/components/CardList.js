@@ -12,6 +12,9 @@ const cardsArray = items.reverse().map((user,i)=>{
     type={items[i].type}
     submitDate={items[i].submitDate}
     ky ={items[i].key}
+    name = {items[i].name}
+    pno = {items[i].pno}
+    reason = {items[i].reason}
     />
 })
   return(

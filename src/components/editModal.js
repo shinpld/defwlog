@@ -110,42 +110,47 @@ const users = [
   ];
 const names = [
   {
-    value: 'Policy',
-    label: 'Policy',
+    value: 'AUTTAPHUD',
+    label: 'AUTTAPHUD',
   },
   {
-    value: 'Interface',
-    label: 'Interface',
+    value: 'BOONAUM',
+    label: 'BOONAUM',
   },
   {
-    value: 'Route',
-    label: 'Route',
+    value: 'CHANAKARN',
+    label: 'CHANAKARN',
   },
   {
-    value: 'Other',
-    label: 'Other',
+    value: 'JESADA',
+    label: 'JESADA',
   },
 ];
 
 
-export default function CreateButton() {
+export default function EditModal({Emessage,Ecircuit,Etype,EsubmitDate,Eky,Ename,Ereason,Epno}) {
 
   const classes = useStyles();
   const classesG = useGridStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
 
-
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
-  const [circuit, setCircuit] = React.useState('User');
-  const [detailtext, setDetailtext] = React.useState('');
-  const [type, setType] = React.useState('');
+  const [circuit, setCircuit] = React.useState(Ecircuit);
+  const [detailtext, setDetailtext] = React.useState(Emessage);
+  const [type, setType] = React.useState(Etype);
   const [selectedDate, setSelectedDate] = React.useState(new Date('2019-08-18T21:11:54'));
+  const [name,setName] =  React.useState(Ename);
+  const [pno,setPno] = React.useState(Epno);
+  const [reason,setReason] = React.useState(Ereason);
+
 
   const handleOpen = () => {
     setOpen(true);
   };
-
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleSelectChange = (event) => {
     setCircuit(event.target.value);
   };
@@ -153,35 +158,45 @@ export default function CreateButton() {
     setDetailtext(event.target.value);
   };
   const handleTypeChange = (event) => {
-    setType(event.target.value);
+    setType(event.target.value); 
+     if(type !== 'policy'){
+      setPno('');
+      }
   };
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
-
-
-  const handleClose = () => {
-    setOpen(false);
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
-  const generateLog2= () =>{ 
+  const handlePnoChange = (event) => {
+    setName(event.target.value);
+  };
+  const handleReasonChange = (event) => {
+    setReason(event.target.value);
+  };
+  
+
+
+  const editLog2= () =>{ 
     // Changing state 
 
-    var immediatelyAvailableReference = base.push('messages', {
-      data: 
+
+    base.update(`messages/${Eky}`, {
+       data: 
         {message: ` ${detailtext}  ตรงกันข้ามกับความเชื่อที่นิยมกัน Lorem Ipsum ไม่ได้เป็นเพียงแค่ชุดตัวอักษรที่สุ่มขึ้นมามั่วๆ แต่หากมีที่มาจากวรรณกรรมละตินคลาสสิกชิ้นหนึ่งในยุค 45 ปีก่อนคริสตศักราช ทำให้มันมีอายุถึงกว่า 2000 ปีเลยทีเดียว ริชาร์ด แมคคลินท็อค ศาสตราจารย์ชาวละติน จากวิทยาลัยแฮมพ์เด็น-ซิดนีย์ ในรัฐเวอร์จิเนียร์ นำคำภาษาละตินคำว่า consectetur ซึ่งหาคำแปลไม่ได้จาก Lorem Ipsum ตอนหนึ่งมาค้นเพิ่มเติม โดยตรวจเทียบกับแหล่งอ้างอิงต่างๆ ในวรรณกรรมคลาสสิก และค้นพบแหล่งข้อมูลที่ไร้ข้อกังขาว่า Lorem Ipsum`,
         circuit: `${circuit}`,
         type: `${type}`,
         submitDate: `${selectedDate}`,
-        
-        reason: 'reason1' },
+        name: `${name}`,
+        pno:`${pno}`,
+        reason: `${reason}` },
       then(err){
         if(!err){
          
         }
       }
     });
-    //available immediately, you don't have to wait for the callback to be called
-    var generatedKey = immediatelyAvailableReference.key;
     
   } 
   
@@ -267,23 +282,12 @@ export default function CreateButton() {
                 
                 <Grid item xs={6} sm={3}>
                     {type === 'Policy' && 
-                        <TextField
-                                id="fill-Circuit"
-                                select
-                                label="Select"
-                                value={type}
-                                onChange={handleTypeChange}
-                                helperText=""
-                                variant="filled"
-                                className="w-100"
-
-                                >
-                                {types.map((option) => (
-                                    <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                    </MenuItem>
-                                ))}
-                        </TextField>
+                        <TextField id="filled-search" 
+                                    label="Policy No."  
+                                    type="search" 
+                                    value = {pno}
+                                    variant="filled" 
+                                    onChange={handlePnoChange} />
                     
                     }
                     
@@ -298,9 +302,9 @@ export default function CreateButton() {
                         label="สาเหตุ"
                         multiline
                         rows={2}
-                        defaultValue=""
+                        defaultValue={Ereason}
                         variant="outlined"
-                        onChange={handleDetailChange}
+                        onChange={handleReasonChange}
                         className="w-100"
                     />
                 </Grid>
@@ -309,13 +313,13 @@ export default function CreateButton() {
                         id="fill-Type"
                         select
                         label="ผู้บันทึก"
-                        value={circuit}
-                        onChange={handleSelectChange}
+                        value={name}
+                        onChange={handleNameChange}
                         helperText=""
                         variant="filled"
                         className="w-100"
                         >
-                        {circuits.map((option) => (
+                        {names.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
                             {option.label}
                             </MenuItem>
@@ -324,7 +328,7 @@ export default function CreateButton() {
                 </Grid>
 
                 <Grid item xs={6} sm={3}>
-                    <Button variant="contained" color="secondary" onClick={()=>{ generateLog2(); handleClose(); }} >
+                    <Button variant="contained" color="secondary" onClick={()=>{ editLog2(); handleClose(); }} >
                         Publish 
                     </Button>
                 </Grid>
@@ -336,7 +340,7 @@ export default function CreateButton() {
                         label="ข้อความ"
                         multiline
                         rows={4}
-                        defaultValue=""
+                        defaultValue={Emessage}
                         variant="outlined"
                         onChange={handleDetailChange}
                         className="w-100"
@@ -354,8 +358,8 @@ export default function CreateButton() {
 
   return (
     <div>
-      <Button variant="contained" color="secondary" onClick={handleOpen }>
-        Create Log
+      <Button variant="contained" size="small" color="secondary" onClick={handleOpen }>
+        Edit
       </Button>
       <Modal
         open={open}

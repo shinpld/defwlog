@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import CreateButton from '../components/CreateButton';
 import Grid from '@material-ui/core/Grid';
 import Menubar from '../components/Menubar';
+import Container from '@material-ui/core/Container';
 
 class App extends Component{
   constructor(){
@@ -72,28 +73,30 @@ class App extends Component{
 
 
    
-    // if(!items.length){
-    //   return <h1>Loading...</h1>
-    // }
+    if(!items.length){
+      return <h1 className='black'>Loading...</h1>
+    }
 
     return (
       <div >
       
             
-        <Menubar searchCh={this.onSearchChange} />
+        <Menubar circuitFilter={this.onCircuitChange} />
 
-        <div>
+        <Container maxWidth="80%">
           <SearchBox searchChange={this.onSearchChange}/>
-        </div>
+        </Container>
  
 
         
 
        
-        
+        <Container maxWidth="80%">
         <Scroll className="pv2">
           <CardList items={filteredItems} />
         </Scroll>
+        </Container>
+        
 
       
       </div>
