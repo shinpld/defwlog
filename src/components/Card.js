@@ -22,7 +22,7 @@ const Card = ({message,circuit,type,submitDate,ky,name,reason,pno}) => {
   
           
           <div className="dt-ns dt--fixed-ns bg-black-10 flex">
-            <div class="fl w-20 pa2 ">
+            <div className="fl w-20 pa2 ">
             <Chip size="medium" label={(circuit==null) ? "null":circuit} color="primary"/>
           
             </div>
@@ -30,30 +30,30 @@ const Card = ({message,circuit,type,submitDate,ky,name,reason,pno}) => {
             <Chip size="medium" label={(type==null) ? "null":type} color="secondary"/>
             </div>
 
-            <div class="fl w-40 pa3 tc v-mid">
-              <dt class="dib b">{(submitDate==null) ? "null":submitDate.slice(0,-16)}</dt>
+            <div className="fl w-40 pa3 tc v-mid">
+              <dt className="dib b">{(submitDate==null) ? "null":submitDate.slice(0,-16)}</dt>
              
             </div>
 
-            <div class="fl w-20 pa2 ">
-              <dt class="dib b">{"By: "}</dt>
+            <div className="fl w-20 pa2 ">
+              <dt className="dib b">{"By: "}</dt>
               <Chip size="medium" label={(name==null) ? "Sorawit":name} />
             </div>
           
           </div>
           <div className="dt-ns dt--fixed-ns bg-black-10 flex bt">
-              <div class="fl w-40 pa3 tl">
-                <dt class="dib b" >{"สาเหตุ :"} {reason}</dt>
+              <div className="fl w-40 pa3 tl">
+                <dt className="dib b" >{"สาเหตุ :"} {reason}</dt>
               </div>
-              <div class="fl w-20 pa2 ">
+              <div className="fl w-20 pa2 ">
               
               </div>
 
-              <div class="fl w-20 pa2 tc ">
+              <div className="fl w-20 pa2 tc ">
                 <Button variant="contained" size="small" color="primary" onClick={onDeleteClick}> Delete </Button>
               </div>
 
-              <div class="fl w-20 pa2 ">
+              <div className="fl w-20 pa2 ">
              
                 <EditModal 
                 Emessage = {message}

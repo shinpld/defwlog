@@ -10,6 +10,7 @@ import CreateButton from '../components/CreateButton';
 import Grid from '@material-ui/core/Grid';
 import Menubar from '../components/Menubar';
 import Container from '@material-ui/core/Container';
+import FilterList from '../components/FilterList';
 
 class App extends Component{
   constructor(){
@@ -19,7 +20,9 @@ class App extends Component{
       items: [],
       searchfield: '',
       inputmsg: '',
-      inputCircuit:''
+      inputCircuit:'',
+      searchType:'',
+      page:''
     }
   }
 
@@ -83,7 +86,9 @@ class App extends Component{
         <Menubar circuitFilter={this.onCircuitChange} />
 
         <Container maxWidth="80%">
-          <SearchBox searchChange={this.onSearchChange}/>
+          
+            <SearchBox searchChange={this.onSearchChange}/>
+          
         </Container>
  
 
