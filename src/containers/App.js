@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import Menubar from '../components/Menubar';
 import Container from '@material-ui/core/Container';
 import FilterList from '../components/FilterList';
+import SearchBar from '../components/SearchBar';
 
 class App extends Component{
   constructor(){
@@ -22,6 +23,7 @@ class App extends Component{
       inputmsg: '',
       inputCircuit:'',
       searchType:'',
+      inputpno:'',
       page:''
     }
   }
@@ -69,11 +71,14 @@ class App extends Component{
 
 
   render(){
-    const {items, searchfield,inputmsg,inputCircuit} =this.state;
+    const {items, searchfield,inputmsg,inputCircuit,inputpno} =this.state;
     const filteredItems = this.state.items.filter(items=>{
-      return (items.message.toString().toLowerCase().includes(searchfield.toLowerCase()))
+      return (items.message.toString().toLowerCase().includes(searchfield.toLowerCase())
+              &&items.circuit.toString().toLowerCase().includes(inputCircuit.toLowerCase())
+              &&items.type.toString().toLowerCase().includes(inputpno.toLowerCase())
+              )
     });
-
+    
 
    
     if(!items.length){
@@ -83,13 +88,20 @@ class App extends Component{
     return (
       <div >
     
-        <Menubar circuitFilter={this.onCircuitChange} />
+        <Menubar  />
 
-        <Container maxWidth="80%">
+       
           
+            
+          <div className="dt-ns dt--fixed-ns bg-black-10 flex">
+            <div className="fl w-20 pa2 ">
             <SearchBox searchChange={this.onSearchChange}/>
+            </div>
+            <SearchBar selectedCircuit = {this.inputCircuit} circuitChange = {this.onCircuitChange}/>
+            
           
-        </Container>
+          </div>
+   
  
 
         
